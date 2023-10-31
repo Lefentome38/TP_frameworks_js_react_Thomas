@@ -1,0 +1,24 @@
+.HelloWorld_color{
+  color: red;
+}
+
+.BlueMarine{
+  color: rgb(65, 65, 252);
+}
+
+.label_button{
+  border: solid red;
+  display: flex;
+  margin: 10px;
+  
+  button{
+    margin: 10px;
+  }
+}
+
+.barre_text{
+  display: flex;
+  p{
+    margin: 10px;
+  }
+}

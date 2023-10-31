@@ -2,6 +2,7 @@ import CounterClick from './D_Counter/Counter'
 import HelloWorld from './D_HelloWorld/HelloWorld'
 import Liste_Non_Ordonne from './D_List/liste_non_ordonne'
 import NameFrom from './D_NameFrom/NameFrom'
+import Todoliste from './D_Todoliste/Todoliste'
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
       <CounterClick/>
       <Liste_Non_Ordonne/>
       <NameFrom/>
+      <Todoliste/>
     </>
   )
 }
