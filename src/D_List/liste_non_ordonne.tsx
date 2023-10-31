@@ -2,8 +2,6 @@ function Liste_Non_Ordonne() {
 
   const list = ["Thomas","Yoann","Aly","Jeremy"]
 
-  // const [name, setName] = useState(list);
-
   return (
     <>
       <h2>liste non ordonnée</h2>

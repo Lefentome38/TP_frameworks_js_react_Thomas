@@ -1,40 +1,47 @@
-import { useCallback, useState } from 'react';
-
-const Tableau_Todolist = ["...","toto"]
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 function Todoliste() {
-
   const [Todo_text, setTodo_text] = useState("");
+  const [todos, setTodos] = useState<string[]>([])
 
   const text = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value)
     setTodo_text(e.target.value)
   },[])
-
-  const [nbr, setNbr] = useState(0)
+  
   const button_ajouter = useCallback(
-    () => setNbr(nbr + 1)
-    , [nbr]
-  ); 
+    () => {setTodos([Todo_text, ...todos])
+    setTodo_text("")
+    console.log("todo ajouter");},
+    [todos, Todo_text]
+  ) 
 
+  const TodosDelete = useCallback(
+    (i_TodoDelete: number) => {
+      setTodos(todos.filter((todo, i) => i !== i_TodoDelete))
+    console.log("todo supprimer");
+    },
+    [todos]
+  )
+
+  useEffect(() => {
+    console.log("start");
+  },[todos])
+  
   return (
     <>
-      <div>
-        <h1>{Tableau_Todolist}</h1>
-      </div>
-      
-      <label className='label_button' htmlFor="bouton">
-        <button onClick={button_ajouter}>ajouter</button>
-        <p>{nbr}</p>
-      </label>
-      <label className='barre_text' htmlFor="text">
-        <input type="text" onChange={text}/>
-        <p>{Todo_text}</p>
-      </label>
+      <button onClick={button_ajouter}>ajouter</button>
+      <label className='barre_text' htmlFor="text">Nouvelle Todo : </label>
+      <input type="text" value={Todo_text} onChange={text}/>
 
-        {Tableau_Todolist.map((name) => (
-          <p>{name}</p>
-        ))}
+      <ul className='ul_Todo_liste'>
+        {todos.map((name, i) => (
+          <div>
+              <li key={i}>{name}</li>
+              <button onClick={() => TodosDelete(i)}>X</button>
+          </div>
+          ))}
+      </ul>
     </>
   );
 };
